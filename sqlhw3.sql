@@ -175,6 +175,22 @@ SELECT E.ename, E.age
 FROM Emp E, Works W, Dept D
 WHERE E.eid = W.eid AND W.did = D.did AND D.did = 'Software#';
 Q2.
+SELECT D.dept, count(W.eid)
+FROM Works,
+	(SELECT W.did as dept, SUM(W.pct_time) as hours
+	FROM Works W
+	GROUP BY dept) as D
+WHERE D.dept = W.did AND D.hours > 20
+GROUP BY D.dept;
+Q3.
+SELECT E.eid, E.ename
+FROM Employees E, Works W, Dept D
+WHERE E.eid = W.eid AND W.did = D.did AND E.salary > S.budget
+EXCEPT
+SELECT E.eid, E.ename
+FROM Employees E, Works W, Dept D
+WHERE E.eid = W.eid AND W.did = D.did AND E.salary < S.budget;
+Q4.
 
 
 
