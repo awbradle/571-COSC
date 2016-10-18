@@ -191,7 +191,35 @@ SELECT E.eid, E.ename
 FROM Employees E, Works W, Dept D
 WHERE E.eid = W.eid AND W.did = D.did AND E.salary < S.budget;
 Q4.
+SELECT D.managerid
+FROM Dept D
+WHERE D.budget > 1000000
+INTERSECT
+SELECT D.managerid
+FROM Dept D
+WHERE D.budget <= 1000000;
+Q5.
+SELECT E.ename
+FROM Emp E, Dept D,
+	(SELECT max(D.budget) as maxbud
+	FROM Dept D) as B
+WHERE E.eid = D.managerid AND B.maxbud = D.budget;
+Q6.
+SELECT M.man
+FROM	
+	(SELECT D.manager as man, SUM(D.budget) as totbud
+	FROM Dept D
+	GROUP BY D.manager) as M
+WHERE M.totbud > 5000000;
+Q7.
+SELECT 
+(SELECT MAX(totbud)
+FROM	
+	(SELECT D.manager as man, SUM(D.budget) as totbud
+	FROM Dept D
+	GROUP BY D.manager) as M)
 
+	
 
 
 
