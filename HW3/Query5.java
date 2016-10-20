@@ -1,5 +1,15 @@
-import java.sql.*;
+// Andrew Bradley
+// COSC 571
+// E01485852
 
+// This is the 4th query that left joins customers with employees and prints
+//the first 15 results of customers and numer of employees for each city with customers
+// It modifies sample code given in class and from Tutorials Point on using
+// Java to connect to a sqlite3 database.
+//To run compile and use command:
+//java -classpath ".:sqlite-jdbc-3.8.11.2.jar" Query5
+
+import java.sql.*;
 
 public class Query5
 {

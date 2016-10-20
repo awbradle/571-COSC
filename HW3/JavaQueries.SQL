@@ -1,3 +1,9 @@
+-- Andrew Bradley
+-- COSC 571
+-- E01485852
+-- 
+-- These are the SQL Queries for the 5 challenges
+
 SELECT ProductName, UnitPrice
 FROM Products
 ORDER BY UnitPrice desc
@@ -36,6 +42,3 @@ LEFT JOIN
 	GROUP BY E.city) as E
 ON C.city = E.city;
 
-Select E.city, E.emp, C.cust FROM (SELECT E.city, COUNT(E.city) AS emp FROM Employees E GROUP BY E.city) as E LEFT JOIN (SELECT C.city, COUNT(C.city) AS cust FROM Customers C GROUP BY C.city) as C ON E.city = C.city
-
-Select C.city, C.cust, E.emp FROM (SELECT C.city, COUNT(C.city) AS cust FROM Customers C GROUP BY C.city) as C LEFT JOIN (SELECT E.city, COUNT(E.city) AS emp FROM Employees E GROUP BY E.city) as E ON C.city = E.city;
